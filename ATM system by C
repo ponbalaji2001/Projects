@@ -1,0 +1,52 @@
+#include <stdio.h>
+#define account_no 4744984861
+#define password 2001
+void main() 
+{ 
+int amount=5000;
+int a,p,w;
+char b,x,s,r;
+printf("Enter your account number :");
+scanf("%d",&a);
+if(a==account_no)
+ {
+  printf("Enter your pin number :");
+  scanf("%d",&p);
+  if(p==password)
+   {
+     printf("Withdrawal - enter W\nBalance enquiry - enter B\n");
+     scanf("%c %c",&x,&b);
+     if(b=='W')
+      {
+        printf("Enter the amount to Withdrawal :");
+        scanf("%d",&w);
+        if(w<=amount)
+         {
+          amount=amount-w;
+          printf("Please collect your cash\nYour remaining balance is %d", amount);
+          printf("\nDo you want your receipt\nYes-Y No-N\n");
+          scanf("%c %c",&s,&r);
+          if(r=='Y')
+            printf("Printing...\nPlease take your receipt");
+          else if(r=='N')
+            printf("Thank you");
+          else    
+            printf("Thank you");   
+        }
+       else
+        printf("Insufficient Balance");
+     }
+     
+    else if(b=='B')
+      printf("Your balance is %d",amount);
+     
+    else
+      printf("Invalid value, try again"); 
+   }
+ else
+    printf("Invalid pin number");
+ }
+ else
+  printf("Account not found");
+    
+}

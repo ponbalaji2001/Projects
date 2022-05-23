@@ -1,0 +1,61 @@
+import random
+List=["Rock","Paper","Scissor"]
+Bot_points=0
+User_points=0
+chances=3
+print("Chances remaining:", chances)
+def display():
+    print("Chances remaining:", chances)
+    print("Bot points:",Bot_points)
+    print("User points:",User_points)
+
+def winner():
+
+  if(User_points>Bot_points):
+     print("User Won")
+  elif(Bot_points>User_points):
+     print("Bot Won")
+  elif(User_points==Bot_points):
+    print("Match Draw")
+  print("Game End")
+  
+def XO():
+ global Bot_points
+ global User_points
+ global chances
+ n=3
+ for i in range(0,n):
+  user = input("Enter text:")
+  if((user!="Rock" and user!="Paper") and user!="Scissor"):
+    print("Invalid Text")
+    XO()
+    break
+
+  print("User:",user)
+  bot=random.randint(0,2)
+  print("Bot:",List[bot])
+
+  if(List[bot]=="Paper" and user=="Rock"):
+      Bot_points=Bot_points+1
+  elif(List[bot]=="Rock" and user=="Paper"):
+     User_points=User_points+1
+  elif(List[bot]=="Rock" and user=="Scissor"):
+     Bot_points=Bot_points+1
+  elif(List[bot]=="Scissor" and user=="Rock"):
+     User_points=User_points+1
+  elif (List[bot] == "Scissor" and user == "Paper"):
+     Bot_points = Bot_points + 1
+  elif (List[bot] == "Paper" and user == "Scissor"):
+    User_points = User_points + 1
+  chances = chances - 1
+
+  if(User_points==2):
+      display()
+      break
+  elif(Bot_points == 2):
+      display()
+      break
+  display()
+XO()
+winner()
+
